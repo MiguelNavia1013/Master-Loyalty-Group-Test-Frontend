@@ -1,0 +1,27 @@
+<nav class="topbar">
+  <a routerLink="/clientes" routerLinkActive="active">Clientes</a>
+  <a routerLink="/tiendas" routerLinkActive="active">Tiendas</a>
+  <a routerLink="/articulos" routerLinkActive="active">Artículos</a>
+  <a routerLink="/compras" routerLinkActive="active" [routerLinkActiveOptions]="{ exact:true }">Compras</a>
+  <button (click)="logout()" class="logout-btn">Cerrar sesión</button>
+</nav>
+<router-outlet></router-outlet>
+
+<style>
+  .topbar {
+    display: flex;
+    gap: 1rem;
+    padding: .75rem 1rem;
+    background: #111827;
+  }
+
+  .topbar a {
+    color: #e5e7eb;
+    text-decoration: none;
+  }
+
+  .topbar a.active {
+    color: #fff;
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,23 @@
+.login-wrap {
+    max-width: 400px;
+    margin: 4rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 1rem;
+    background: #7c3aed;
+    border: none;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}

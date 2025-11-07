@@ -1,0 +1,11 @@
+<div class="login-wrap">
+    <h2>Iniciar sesión</h2>
+    <form class="login-form" (ngSubmit)="login()" #f="ngForm">
+        <label>Usuario</label>
+        <input type="text" [(ngModel)]="username" name="username" required>
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="password" name="password" required>
+        <button [disabled]="f.invalid">Ingresar</button>
+        <p *ngIf="error" style="color:red">{{ error }}</p>
+    </form>
+</div>

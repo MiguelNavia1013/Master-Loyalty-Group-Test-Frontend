@@ -1,0 +1,94 @@
+.container {
+    max-width: 980px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    margin-bottom: 1.5rem;
+}
+.card-header {
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+}
+.card-body {
+    padding: 1rem 1.25rem;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: .75rem;
+}
+.input {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: .5rem .75rem;
+    outline: none;
+}
+.input:focus {
+    border-color: #7c3aed;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, .15);
+}
+.actions {
+    display: flex;
+    gap: .5rem;
+    margin-top: .75rem;
+}
+.btn {
+    background: #7c3aed;
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    padding: .6rem 1rem;
+    cursor: pointer;
+}
+.btn:hover {
+    filter: brightness(1.05);
+}
+.btn.ghost {
+    background: #e5e7eb;
+    color: #111827;
+}
+.btn.small {
+    padding: .35rem .6rem;
+    border-radius: 6px;
+}
+.btn.danger {
+    background: #b91c1c;
+}
+
+.table-wrap {
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid #eee;
+    padding: .6rem;
+    text-align: left;
+}
+
+thead th {
+    background: #fafafa;
+    font-weight: 600;
+}
+
+.msg {
+    margin-top: .5rem;
+}
+
+.msg.ok {
+    color: #0a7f40;
+}
+
+.msg.error {
+    color: #b91c1c;
+}

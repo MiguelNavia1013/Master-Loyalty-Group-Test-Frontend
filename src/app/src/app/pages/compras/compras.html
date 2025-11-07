@@ -1,0 +1,61 @@
+<div class="container">
+    <h1>Compras</h1>
+    <div class="card">
+        <div class="card-header">Nueva compra</div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                <div class="grid3">
+                    <label>Cliente
+                        <select class="input" formControlName="clienteId">
+                            <option [ngValue]="null" disabled>-- Selecciona --</option>
+                            <option *ngFor="let c of clientes" [ngValue]="c.id">
+                                {{ c.nombre }} {{ c.apellidos }}
+                            </option>
+                        </select>
+                    </label>
+                    <label>Artículo
+                        <select class="input" formControlName="articuloId">
+                            <option [ngValue]="null" disabled>-- Selecciona --</option>
+                            <option *ngFor="let a of articulos" [ngValue]="a.id">
+                                {{ a.codigo }} — {{ a.descripcion }}
+                            </option>
+                        </select>
+                    </label>
+                    <label>Fecha
+                        <input type="date" class="input" formControlName="fecha">
+                    </label>
+                </div>
+                <div class="actions">
+                    <button class="btn" type="submit">Registrar compra</button>
+                </div>
+            </form>
+            <div class="msg ok" *ngIf="successMsg">{{ successMsg }}</div>
+            <div class="msg error" *ngIf="errorMsg">{{ errorMsg }}</div>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Cliente</th>
+                    <th>Artículo</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let compra of compras">
+                    <td>{{ compra.id }}</td>
+                    <td>
+                        {{ compra.clienteNombre || '' }}
+                    </td>
+                    <td>
+                        {{ compra.articuloCodigo || '' }} - {{ compra.articuloDescripcion || '' }}
+                    </td>
+                    <td>{{ compra.fecha | date:'yyyy-MM-dd' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="loading">Cargando...</div>
+    </div>
+</div>

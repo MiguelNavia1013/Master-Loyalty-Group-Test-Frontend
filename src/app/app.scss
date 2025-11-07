@@ -1,0 +1,31 @@
+.topbar {
+    display: flex;
+    gap: 1rem;
+    padding: .75rem 1rem;
+    background: #111827;
+    align-items: center;
+}
+
+.topbar a {
+    color: #e5e7eb;
+    text-decoration: none;
+}
+
+.topbar a.active {
+    color: #fff;
+    font-weight: 600;
+}
+
+.logout-btn {
+    margin-left: auto;
+    background: #b91c1c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: .4rem .8rem;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    filter: brightness(1.1);
+}

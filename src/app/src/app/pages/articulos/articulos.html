@@ -1,0 +1,80 @@
+<div class="container">
+    <h1>Artículos</h1>
+
+    <div class="card">
+        <div class="card-header">
+            {{ editId ? ('Editar artículo #' + editId) : 'Nuevo artículo' }}
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                <div class="grid">
+                    <label>
+                        Código
+                        <input type="text" class="input" formControlName="codigo">
+                    </label>
+
+                    <label>
+                        Descripción
+                        <input type="text" class="input" formControlName="descripcion">
+                    </label>
+
+                    <label>
+                        Precio
+                        <input type="number" class="input" formControlName="precio" step="0.01">
+                    </label>
+
+                    <label>
+                        Imagen (URL)
+                        <input type="text" class="input" formControlName="imagen">
+                    </label>
+
+                    <label>
+                        Stock
+                        <input type="number" class="input" formControlName="stock">
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button class="btn" type="submit">{{ editId ? 'Actualizar' : 'Guardar' }}</button>
+                    <button *ngIf="editId" class="btn ghost" type="button" (click)="cancelEdit()">Cancelar</button>
+                </div>
+            </form>
+
+            <div class="msg ok" *ngIf="successMsg">{{ successMsg }}</div>
+            <div class="msg error" *ngIf="errorMsg">{{ errorMsg }}</div>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <input class="input" placeholder="Buscar..." [(ngModel)]="searchText" (ngModelChange)="onSearchChange()">
+        <span *ngIf="loading">Cargando...</span>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th style="width:150px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of articulos">
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.codigo }}</td>
+                    <td>{{ a.descripcion }}</td>
+                    <td>{{ a.precio | currency:'MXN':'symbol-narrow' }}</td>
+                    <td>{{ a.stock }}</td>
+                    <td class="actions">
+                        <button class="btn small" (click)="edit(a)" type="button">Editar</button>
+                        <button class="btn danger small" (click)="remove(a)" type="button">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

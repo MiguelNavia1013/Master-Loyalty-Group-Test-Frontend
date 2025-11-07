@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Tiendas</h1>
+    <div class="card">
+        <div class="card-header">{{ editId ? ('Editar tienda #' + editId) : 'Nueva tienda' }}</div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+                <div class="grid">
+                    <label>Sucursal
+                        <input type="text" class="input" formControlName="sucursal">
+                    </label>
+                    <label>Dirección
+                        <input type="text" class="input" formControlName="direccion">
+                    </label>
+                </div>
+                <div class="actions">
+                    <button class="btn" type="submit">{{ editId ? 'Actualizar' : 'Guardar' }}</button>
+                    <button *ngIf="editId" class="btn ghost" type="button" (click)="cancelEdit()">Cancelar</button>
+                </div>
+            </form>
+            <div class="msg ok" *ngIf="successMsg">{{ successMsg }}</div>
+            <div class="msg error" *ngIf="errorMsg">{{ errorMsg }}</div>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sucursal</th>
+                    <th>Dirección</th>
+                    <th style="width:150px;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tiendas">
+                    <td>{{ t.id }}</td>
+                    <td>{{ t.sucursal }}</td>
+                    <td>{{ t.direccion }}</td>
+                    <td class="actions">
+                        <button class="btn small" type="button" (click)="edit(t)">Editar</button>
+                        <button class="btn danger small" type="button" (click)="remove(t)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="loading">Cargando...</div>
+    </div>
+</div>

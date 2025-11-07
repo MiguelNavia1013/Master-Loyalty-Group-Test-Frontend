@@ -1,0 +1,51 @@
+<div class="container">
+<h1>Clientes</h1>
+<section class="card">
+    <h3>{{ editId ? 'Editar cliente' : 'Nuevo cliente' }}</h3>
+    <form class="grid" [formGroup]="form" (ngSubmit)="guardar()">
+        <label>
+            <span>Nombre</span>
+            <input formControlName="nombre" />
+        </label>
+        <label>
+            <span>Apellidos</span>
+            <input formControlName="apellidos" />
+        </label>
+        <label class="col-2">
+            <span>Dirección</span>
+            <input formControlName="direccion" />
+        </label>
+        <div class="actions col-2">
+            <button type="submit" [disabled]="form.invalid">
+                {{ editId ? 'Actualizar' : 'Guardar' }}
+            </button>
+            <button type="button" class="light" (click)="cancelar()" *ngIf="editId">Cancelar</button>
+        </div>
+    </form>
+</section>
+<section class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Dirección</th>
+                <th class="center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of clientes">
+                <td>{{ c.id }}</td>
+                <td>{{ c.nombre }}</td>
+                <td>{{ c.apellidos }}</td>
+                <td>{{ c.direccion }}</td>
+                <td class="center">
+                    <button (click)="editar(c)">Editar</button>
+                    <button class="danger" (click)="eliminar(c.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</div>
